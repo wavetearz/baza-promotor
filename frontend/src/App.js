@@ -32,17 +32,17 @@ function App() {
 		setPage(1);
 	};
 
-  return (
-    <div className="App">
-		<Navbar />
-		<main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
-			<SearchBar />
-			<Filters filters={filters} setFilters={setFilters} onClear={clearFilters} />
-			<MainTable page={page} setTotalPages={setTotalPages} filters={filters} />
-			<Pagination page={page} setPage={setPage} totalPages={totalPages} />
-		</main>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Navbar />
+			<main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
+				<SearchBar />
+				<Filters filters={filters} setFilters={setFilters} onClear={clearFilters} />
+				<MainTable page={page} setTotalPages={setTotalPages} filters={filters} />
+				<Pagination page={page} setPage={setPage} totalPages={totalPages} />
+			</main>
+		</div>
+	);
 }
 
 export default App;
