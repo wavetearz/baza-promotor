@@ -38,7 +38,7 @@ function App() {
 			<main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
 				<SearchBar />
 				<Filters filters={filters} setFilters={setFilters} onClear={clearFilters} />
-				<MainTable page={page} setTotalPages={setTotalPages} filters={filters} />
+				<MainTable page={page} setTotalPages={setTotalPages} setPage={setPage} filters={filters} />
 				<Pagination page={page} setPage={setPage} totalPages={totalPages} />
 			</main>
 		</div>

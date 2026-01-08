@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function MainTable({ page, setTotalPages, filters, limit = 10 }) {
+export default function MainTable({ page, setTotalPages, setPage, filters, limit = 10 }) {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -16,7 +16,9 @@ export default function MainTable({ page, setTotalPages, filters, limit = 10 }) 
 
 				const response = await fetch(`http://localhost:4000/promotors?${params.toString()}`);
 				const json = await response.json();
-
+				if(filters.geneFunction || filters.organismType || filters.dataType) {
+					setPage(1);
+				}
 				setData(json.data);
 				setTotalPages(json.totalPages);
 			} catch (error) {
