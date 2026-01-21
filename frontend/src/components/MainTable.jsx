@@ -3,6 +3,15 @@ import { useState, useEffect } from "react";
 export default function MainTable({ page, setTotalPages, setPage, search, filters, limit = 10 }) {
 	const [data, setData] = useState([]);
 
+	function highlightText(text, query) {
+		if (!query) return text;
+		const regex = new RegExp(`(${query})`, 'gi');
+		const parts = text.split(regex);
+		return parts.map((part, idx) =>
+			regex.test(part) ? <mark key={idx} className="bg-yellow-200">{part}</mark> : part
+		);
+	}
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -52,9 +61,9 @@ export default function MainTable({ page, setTotalPages, setPage, search, filter
 			<tbody>
 				{data.map((item, index) => (
 					<tr key={item._id || index} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-						<td className="px-3 py-2 font-mono">{item.sequence}</td>
-						<td className="px-3 py-2">{item.geneName}</td>
-						<td className="px-3 py-2">{item.organismName}</td>
+						<td className="px-3 py-2 font-mono">{highlightText(item.sequence, search)}</td>
+						<td className="px-3 py-2">{highlightText(item.geneName, search)}</td>
+						<td className="px-3 py-2">{highlightText(item.organismName, search)}</td>
 						<td className="px-3 py-2">{item.organismType}</td>
 						<td className="px-3 py-2">{item.sequenceLength}</td>
 						<td className="px-3 py-2">{item.gcContent}%</td>
