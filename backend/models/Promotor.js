@@ -1,18 +1,24 @@
 const mongoose = require("mongoose");
 
-const GeneLocationSchema = new mongoose.Schema({
-    start: { type: String, default: "" },
-    end: { type: String, default: "" }
-}, { _id: false });
+// string - typ pola tekstowego
+// number - typ pola liczbowego
+// enum - ograniczenie wartosci pola do okreslonego zbioru wartosci
+// default - wartosc domyslna pola
+// timestamps - automatyczne dodawanie pol createdAt i updatedAt do dokumentow
 
-const PromotorSchema = new mongoose.Schema({
+const GeneLocationSchema = new mongoose.Schema({ // podschemat do przechowywania informacji o lokalizacji genu
+    start: { type: String, default: "" }, // poczatek genu
+    end: { type: String, default: "" } // koniec genu
+}, { _id: false }); // wylaczamy tworzenie osobnego id dla podschematu
+
+const PromotorSchema = new mongoose.Schema({ // glowny schemat dokumentu Promotor
     sequence: { type: String, default: "" },
     geneName: { type: String, default: "" },
     organismName: { type: String, default: "" },
     organismType: {                                     
         type: String,
-        enum: ["Eukaryota", "Prokaryota"],
-        default: "Prokaryota",
+        enum: ["Eukaryota", "Prokaryota"], // ograniczamy typ organizmu do dwoch wartosci
+        default: "Prokaryota", // wartosc domyslna to Prokaryota
     },
     sequenceLength: { type: Number, default: 0 },
     gcContent: { type: Number, default: 0.0 },
@@ -21,11 +27,12 @@ const PromotorSchema = new mongoose.Schema({
     chromosome: { type: String, default: "" },
     dataType: {                                     
         type: String,
-        enum: ["Experimental", "Predicted"],
-        default: "Experimental",
+        enum: ["Experimental", "Predicted"], // ograniczamy typ danych do dwoch wartosci
+        default: "Experimental", // wartosc domyslna to Experimental
     },
     publicationAuthors: { type: [String], default: [] },
-    geneLocation: { type: GeneLocationSchema, default: { start: "", end: "" } },
+    geneLocation: { type: GeneLocationSchema, default: { start: "", end: "" } }, // uzywamy podschematu GeneLocationSchema
 }, {timestamps: true});
 
-module.exports = mongoose.model("Promotor", PromotorSchema, "promotors");
+module.exports = mongoose.model("Promotor", PromotorSchema, "promotors"); 
+// eksportujemy model Mongoose o nazwie "Promotor", oparty na schemacie PromotorSchema
