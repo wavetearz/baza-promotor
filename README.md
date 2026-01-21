@@ -12,7 +12,7 @@ API:
 	* ?page - paginacja
 	* ?limit - limit wyników na stronę; defaultowo - 10
 	* ?[filtr]=[tekst]
-	& ?q=[tekst] - wyszukiwanie frazą
+	* ?q=[tekst] - wyszukiwanie frazą
 * GET /promotors/filters - pobiera opcje filtrowania
 * POST /promotors - pozwala dodać rekord do bazy
 	*	GC content oraz długość sekwencji jest liczona w backendzie, nie jest podawana w requeście
