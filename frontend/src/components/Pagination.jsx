@@ -1,18 +1,28 @@
 export default function Pagination({ page, setPage, totalPages }) {
-	return (
-		<div className="flex justify-between items-center mt-4">
-			<button className="px-3 py-1 border rounded disabled:opacity-50" disabled={page === 1}
-				onClick={() => setPage((p) => Math.max(p - 1, 1))}>
-				Poprzednia
-			</button>
+  const isEmpty = totalPages === 0;
+  const safePage = isEmpty ? 0 : page;
 
-			<span className="text-sm">Strona {page} / {totalPages}</span>
+  return (
+    <div className="flex justify-between items-center mt-4">
+      <button
+        className="px-3 py-1 border rounded disabled:opacity-50"
+        disabled={isEmpty || page === 1}
+        onClick={() => setPage(p => Math.max(p - 1, 1))}
+      >
+        Poprzednia
+      </button>
 
-			<button className="px-3 py-1 border rounded disabled:opacity-50" disabled={page === totalPages}
-				onClick={() => setPage((p) => Math.min(p + 1, totalPages))}>
-				Następna
-			</button>
-		</div>
-	);
+      <span className="text-sm">
+        Strona {safePage} / {totalPages}
+      </span>
+
+      <button
+        className="px-3 py-1 border rounded disabled:opacity-50"
+        disabled={isEmpty || page === totalPages}
+        onClick={() => setPage(p => Math.min(p + 1, totalPages))}
+      >
+        Następna
+    	</button>
+	</div>
+  );
 }
-// todo uniemozliwienie przejscia do nastepnej strony w backendzie

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function MainTable({ page, setTotalPages, setPage, filters, limit = 10 }) {
+export default function MainTable({ page, setTotalPages, setPage, search, filters, limit = 10 }) {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -11,7 +11,8 @@ export default function MainTable({ page, setTotalPages, setPage, filters, limit
 					limit,
 					...(filters.geneFunction && { geneFunction: filters.geneFunction }),
 					...(filters.organismType && { organismType: filters.organismType }),
-					...(filters.dataType && { dataType: filters.dataType })
+					...(filters.dataType && { dataType: filters.dataType }),
+					...(search && { q: search })
 				});
 
 				const response = await fetch(`http://localhost:4000/promotors?${params.toString()}`);
@@ -26,7 +27,7 @@ export default function MainTable({ page, setTotalPages, setPage, filters, limit
 			}
 		};
 	fetchData();
-	}, [page, limit, filters, setTotalPages]);
+	}, [page, limit, filters, search, setTotalPages]);
 
   return (
     <div className="overflow-x-auto max-h-[370px] overflow-y-auto relative">

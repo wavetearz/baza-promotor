@@ -11,7 +11,6 @@ router.get("/filters", async (req, res) => {
     const geneFunctions = await Promotor.distinct("geneFunction");
     const organismTypes = await Promotor.distinct("organismType");
     const dataTypes = await Promotor.distinct("dataType");
-
     res.json({
         geneFunctions,
         organismTypes,
@@ -26,6 +25,15 @@ router.get("/", async (req, res) => {
         const skip = (page - 1) * limit;
 
         const filter = {};
+        if (req.query.q) {
+            const regex = new RegExp(req.query.q, "i");
+            filter.$or = [
+                { geneName: regex },
+                { organismName: regex },
+                { sequence: regex }
+            ];
+        }
+
         if (req.query.geneFunction) filter.geneFunction = req.query.geneFunction;
         if (req.query.organismType) filter.organismType = req.query.organismType;
         if (req.query.dataType) filter.dataType = req.query.dataType;
@@ -56,17 +64,17 @@ router.post("/", async (req, res) => {
     }
 
     const promotor = await Promotor.create({ 
-        sequence, 
-        geneName, 
-        organismName, 
-        organismType, 
+        sequence,
+        geneName,
+        organismName,
+        organismType,
         sequenceLength: sequence.length, 
-        gcContent: gc(sequence),
-        geneFunction, 
-        ncbiAccession, 
-        chromosome, 
-        dataType, 
-        publicationAuthors, 
+        gcContent: calcGC(sequence),
+        geneFunction,
+        ncbiAccession,
+        chromosome,
+        dataType,
+        publicationAuthors,
         geneLocation: {start: geneLocation, end: (parseInt(geneLocation) + sequence.length).toString()}
     });
     res.json(promotor);
