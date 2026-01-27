@@ -10,7 +10,7 @@ export default function Filters({ filters, setFilters, onClear }) {
     useEffect(() => {
         const fetchFilters = async () => {
             try {
-                const res = await fetch("http://localhost:4000/promotors/filters");
+                const res = await fetch("http://127.0.0.1:4000/promotors/filters");
                 const json = await res.json();
                 setOptions(json);
             } catch (err) {

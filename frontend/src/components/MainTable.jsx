@@ -24,7 +24,7 @@ export default function MainTable({ page, setTotalPages, setPage, search, filter
 					...(search && { q: search })
 				});
 
-				const response = await fetch(`http://localhost:4000/promotors?${params.toString()}`);
+				const response = await fetch(`http://127.0.0.1:4000/promotors?${params.toString()}`);
 				const json = await response.json();
 				if(filters.geneFunction || filters.organismType || filters.dataType) {
 					setPage(1);
