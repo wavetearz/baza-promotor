@@ -29,8 +29,6 @@ function App() {
       sequenceLength: Number(form.sequenceLength),
       gcContent: Number(form.gcContent),
       publicationAuthors: form.publicationAuthors
-        .split(",")
-        .map(a => a.trim())
     };
 
     try {
