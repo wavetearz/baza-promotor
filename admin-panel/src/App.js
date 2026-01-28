@@ -41,7 +41,7 @@ function App() {
       });
 
       if (res.ok) {
-        setMsg("✅ Promotor dodany");
+        setMsg("Promotor dodany");
         setForm({
           sequence: "",
           geneName: "",
