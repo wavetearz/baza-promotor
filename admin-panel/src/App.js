@@ -115,7 +115,7 @@ function App() {
         <input name="geneName" value={form.geneName} onChange={handleChange} placeholder="nazwa genu..." />
         <input name="organismName" value={form.organismName} onChange={handleChange} placeholder="nazwa organizmu..." />
         <select name="organismType" value={form.organismType} onChange={handleChange}>
-          <option value="">Organism Type</option>
+          <option value="">Typ organizmu</option>
           <option value="Prokaryota">Prokaryota</option>
           <option value="Eukaryota">Eukaryota</option>
         </select>
@@ -123,7 +123,7 @@ function App() {
         <input name="ncbiAccession" value={form.ncbiAccession} onChange={handleChange} placeholder="NCBI id..." />
         <input type="number" name="chromosome" value={form.chromosome} onChange={handleChange} placeholder="chromosom..." />
         <select name="dataType" value={form.dataType} onChange={handleChange}>
-          <option value="">Data type</option>
+          <option value="">Typ pozyskanych danych</option>
           <option value="Experimental">Experimental</option>
           <option value="Predicted">Predicted</option>
         </select>
