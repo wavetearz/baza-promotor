@@ -25,7 +25,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("https://api.promotory.xyz//promotors", {
+    const res = await fetch("https://api.promotory.xyz/promotors", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)
