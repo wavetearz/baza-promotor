@@ -111,23 +111,23 @@ function App() {
       <h2>Dodaj / edytuj promotor</h2>
 
       <form onSubmit={handleSubmit} className="form">
-        <input name="sequence" value={form.sequence} onChange={handleChange} placeholder="Sequence" />
-        <input name="geneName" value={form.geneName} onChange={handleChange} placeholder="Gene name" />
-        <input name="organismName" value={form.organismName} onChange={handleChange} placeholder="Organism name" />
+        <input name="sequence" value={form.sequence} onChange={handleChange} placeholder="sekwencja..." />
+        <input name="geneName" value={form.geneName} onChange={handleChange} placeholder="nazwa genu..." />
+        <input name="organismName" value={form.organismName} onChange={handleChange} placeholder="nazwa organizmu..." />
         <select name="organismType" value={form.organismType} onChange={handleChange}>
           <option value="">Organism Type</option>
           <option value="Prokaryota">Prokaryota</option>
           <option value="Eukaryota">Eukaryota</option>
         </select>
-        <input name="geneFunction" value={form.geneFunction} onChange={handleChange} placeholder="Gene function" />
-        <input name="ncbiAccession" value={form.ncbiAccession} onChange={handleChange} placeholder="NCBI accession" />
-        <input type="number" name="chromosome" value={form.chromosome} onChange={handleChange} placeholder="Chromosome" />
+        <input name="geneFunction" value={form.geneFunction} onChange={handleChange} placeholder="funkcja genu..." />
+        <input name="ncbiAccession" value={form.ncbiAccession} onChange={handleChange} placeholder="NCBI id..." />
+        <input type="number" name="chromosome" value={form.chromosome} onChange={handleChange} placeholder="chromosom..." />
         <select name="dataType" value={form.dataType} onChange={handleChange}>
           <option value="">Data type</option>
           <option value="Experimental">Experimental</option>
           <option value="Predicted">Predicted</option>
         </select>
-        <input name="publicationAuthors" value={form.publicationAuthors} onChange={handleChange} placeholder="Authors" />
+        <input name="publicationAuthors" value={form.publicationAuthors} onChange={handleChange} placeholder="autorzy..." />
         <button type="submit" className="primary-btn">Dodaj promotor</button>
       </form>
 
