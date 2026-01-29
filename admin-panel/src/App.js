@@ -40,10 +40,9 @@ function App() {
         organismType: "",
         geneFunction: "",
         ncbiAccession: "",
-        chromosome: "",
+        chromosome: 0,
         dataType: "",
         publicationAuthors: "",
-        geneLocation: ""
       });
     } else {
       alert("Błąd dodawania");
@@ -101,7 +100,6 @@ function App() {
         chromosome: "",
         dataType: "",
         publicationAuthors: "",
-        geneLocation: ""
       });
     } else {
       alert("Błąd aktualizacji");
@@ -123,14 +121,13 @@ function App() {
         </select>
         <input name="geneFunction" value={form.geneFunction} onChange={handleChange} placeholder="Gene function" />
         <input name="ncbiAccession" value={form.ncbiAccession} onChange={handleChange} placeholder="NCBI accession" />
-        <input name="chromosome" value={form.chromosome} onChange={handleChange} placeholder="Chromosome" />
+        <input type="number" name="chromosome" value={form.chromosome} onChange={handleChange} placeholder="Chromosome" />
         <select name="dataType" value={form.dataType} onChange={handleChange}>
           <option value="">Data type</option>
           <option value="Experimental">Experimental</option>
           <option value="Predicted">Predicted</option>
         </select>
         <input name="publicationAuthors" value={form.publicationAuthors} onChange={handleChange} placeholder="Authors" />
-        <input name="geneLocation" type="number" value={form.geneLocation} onChange={handleChange} placeholder="Gene location" />
         <button type="submit" className="primary-btn">Dodaj promotor</button>
       </form>
 
