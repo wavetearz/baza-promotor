@@ -108,4 +108,44 @@ router.post("/bulk", async (req, res) => {
 });
 
 
+router.put("/:id", async (req, res) => {
+    const { id } = req.params;
+    const updateData = { ...req.body };
+
+    if (updateData.sequence) {
+        updateData.sequenceLength = updateData.sequence.length;
+        updateData.gcContent = calcGC(updateData.sequence);
+        if (updateData.geneLocation?.start) {
+            updateData.geneLocation = {
+                start: updateData.geneLocation.start,
+                end: (
+                    parseInt(updateData.geneLocation.start) +
+                    updateData.sequence.length
+                ).toString()
+            };
+        }
+    }
+    const updated = await Promotor.findByIdAndUpdate(
+        id,
+        updateData,
+        { new: true, runValidators: true }
+    );
+    if (!updated) {
+        return res.status(404).json({ error: "not found" });
+    }
+    res.json(updated);
+});
+
+
+router.delete("/:id", async (req, res) => {
+    const { id } = req.params;
+    const deleted = await Promotor.findByIdAndDelete(id);
+    if (!deleted) {
+        return res.status(404).json({ error: "Promotor not found" });
+    }
+    res.json({ message: "Promotor deleted successfully", id });
+});
+
+
+
 module.exports = router;
