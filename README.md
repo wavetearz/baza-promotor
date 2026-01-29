@@ -21,3 +21,5 @@ API:
 ![img](https://raw.githubusercontent.com/wavetearz/baza-promotor/refs/heads/main/img/full.png)
 
 ![img](https://raw.githubusercontent.com/wavetearz/baza-promotor/refs/heads/main/img/filtered.png)
+
+![img](https://raw.githubusercontent.com/wavetearz/baza-promotor/refs/heads/main/img/admin-panel.jpg)
