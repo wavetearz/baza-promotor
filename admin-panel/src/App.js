@@ -6,13 +6,13 @@ function App() {
     sequence: "",
     geneName: "",
     organismName: "",
-    organismType: "",
+    organismType: "Prokaryota",
     geneFunction: "",
     ncbiAccession: "",
-    chromosome: "",
-    dataType: "",
+    chromosome: 0,
+    dataType: "Experimental",
     publicationAuthors: "",
-    geneLocation: ""
+    geneLocation: 0
   });
 
   const [search, setSearch] = useState("");
@@ -37,11 +37,12 @@ function App() {
         sequence: "",
         geneName: "",
         organismName: "",
-        organismType: "",
+        organismType: "Prokaryota",
         geneFunction: "",
         ncbiAccession: "",
         chromosome: 0,
-        dataType: "",
+        dataType: "Experimental",
+        geneLocation: 0,
         publicationAuthors: "",
       });
     } else {
@@ -99,6 +100,7 @@ function App() {
         ncbiAccession: "",
         chromosome: "",
         dataType: "",
+        geneLocation: 0,
         publicationAuthors: "",
       });
     } else {
@@ -127,6 +129,7 @@ function App() {
           <option value="Experimental">Experimental</option>
           <option value="Predicted">Predicted</option>
         </select>
+        <input name="geneLocation" value={form.geneLocation} onChange={handleChange} placeholder="lokalizacja genu..." />
         <input name="publicationAuthors" value={form.publicationAuthors} onChange={handleChange} placeholder="autorzy..." />
         <button type="submit" className="primary-btn">Dodaj promotor</button>
       </form>

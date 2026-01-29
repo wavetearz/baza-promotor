@@ -1,0 +1,8 @@
+{
+  "label": "Baza sekwencji promotorowych DNA",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Dokumentacja aplikacji Baza promotorów."
+  }
+}
