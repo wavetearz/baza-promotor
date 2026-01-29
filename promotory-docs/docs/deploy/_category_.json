@@ -1,0 +1,8 @@
+{
+  "label": "Uruchamianie aplikacji",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Dokumentacja backendowej części aplikacji Baza promotorów."
+  }
+}
