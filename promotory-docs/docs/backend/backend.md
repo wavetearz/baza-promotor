@@ -57,6 +57,9 @@ Przykładowe body:
 }
 ```
 
+***PUT*** `/promotors/:id` - pozwala na update danych promotora. W body dodajemy ten klucz(e), ktory chcemy zamienić.
+
+***DELETE*** `/promotors/:id` - usuwanie rekordu
 
 **POST** `/promotors/bulk` - dodawanie w bulku
 Przykładowe body:
